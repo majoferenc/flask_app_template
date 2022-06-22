@@ -16,9 +16,18 @@
 
 	pip freeze > requirements.txt
 
+## Install dependencies from requirements
+
+    pip install -r src/requirements.txt
+    
 ## Run app via python
 
 	python src/main.py
+	
+## Run with auto reload
+    
+    docker-compose build
+    docker-compose up
 
 ## Run with custom log level
 

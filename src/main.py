@@ -15,8 +15,8 @@ parser.add_argument('-logLevel', '--logLevel', help='Set Log Level, default: INF
                     default='INFO')
 parser.add_argument('-port', '--port', help='Set App listen port, default: 8080', type=int, required=False,
                     default=8080)
-parser.add_argument('-host', '--host', help='Set App listen host address, default: 0.0.0.0', type=int, required=False,
-                    default=0.0.0.0)
+parser.add_argument('-host', '--host', help='Set App listen host address, default: 0.0.0.0', type=str, required=False,
+                    default='0.0.0.0')
 
 log_levels = {
     'critical': logging.CRITICAL,

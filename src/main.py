@@ -2,10 +2,9 @@ from datetime import datetime
 from flask import Flask, jsonify
 # Flask CORS is needed for enabling serving requests from all hostnames
 from flask_cors import CORS, cross_origin
-
+from serializer import serializer
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-
 from demo_entity import DemoEntity
 from base_factory import Base
 from entry_logger import logger
@@ -60,11 +59,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @logger
 def index():
     result = DemoEntity.query.all()
-    result_json = []
-    for element in result:
-        result_json.append(element.toJSON())
-        logging.info(element.toJSON())
-    return result_json
+    return jsonify({'data': serializer(result, 'sqlalchemy')})
+
 
 @app.before_first_request
 @logger
